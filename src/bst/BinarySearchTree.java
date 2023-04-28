@@ -2,6 +2,8 @@ package bst;
 
 import java.util.Stack;
 
+import javax.xml.crypto.NodeSetData;
+
 public class BinarySearchTree<T extends Comparable<T>> {
 	
 	private static class BSTNode<T extends Comparable<T>>{
@@ -136,7 +138,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Print the current node first and then recurse on the children
 	public void preOrderStack() {
 		Stack<BSTNode<T>> pre = new Stack<BSTNode<T>>();
+	pre.push(root); 
+	
+
+	while(!pre.isEmpty()) {
+		BSTNode<T> node = pre.pop();
+		System.out.print(node + " ");
 		
+		if ( node.rightChild!=null) {
+			 pre.push(node.rightChild);
+		}
+		if ( node.leftChild!=null) {
+			 pre.push(node.leftChild); 
+			 }
+		
+	       } 
 	}
 		
 
@@ -146,16 +162,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//For a bst this will print the values in sorted order from smallest to largest
 	public void inOrder() {
 		inOrderRecurse(root); 
-<<<<<<< HEAD
 		System.out.println("InOrder test commit");
-
-=======
-//<<<<<<< HEAD
 		
-//=======
-		System.out.println("InOrder test commit");
-//>>>>>>> 30ef5a2030305e879379cd38c2c5809f946241af
->>>>>>> origin/main
 	}
 	
 	public void inOrderRecurse(BSTNode<T> node) {
